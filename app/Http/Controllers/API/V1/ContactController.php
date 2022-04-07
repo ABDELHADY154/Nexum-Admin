@@ -88,9 +88,9 @@ class ContactController extends Controller
         }
     }
 
-    public function search($term)
+    public function search()
     {
-        if ($term) {
+        if ($term = $_GET["term"]) {
             $contacts = Contact::where('first_name', 'like', "%{$term}%")
                 ->orWhere('last_name', 'like', "%{$term}%")
                 ->get();

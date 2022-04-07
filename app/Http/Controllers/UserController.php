@@ -88,4 +88,19 @@ class UserController extends Controller
     {
         //
     }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            "email" => ["required", "email"],
+            "contact_number" => ["required"],
+            "name" => ['required'],
+        ]);
+
+        $user = User::find(Auth::id());
+        $user->update($request->all());
+        $user->save();
+
+        return $this->ok(["updated"]);
+    }
 }

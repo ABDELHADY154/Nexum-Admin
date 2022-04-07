@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\AuthenticationController;
 use App\Http\Controllers\API\V1\ContactController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,6 @@ Route::post("/login", [AuthenticationController::class, "login"])->name("user.lo
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource("/contact", ContactController::class);
-    Route::get("/search/{term}", [ContactController::class, "search"])->name("contact.search");
+    Route::get("/search", [ContactController::class, "search"])->name("contact.search");
+    Route::put("/profile", [UserController::class, "updateProfile"])->name("update.profile");
 });
