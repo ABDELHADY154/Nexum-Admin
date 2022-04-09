@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
         User::create([
             'name' => "Admin",
             'email' => "email@email.com",
@@ -26,5 +27,6 @@ class UserSeeder extends Seeder
             'contact_number' => "+201000015894",
             'remember_token' => Str::random(10),
         ]);
+        User::factory()->count(20)->create();
     }
 }
